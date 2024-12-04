@@ -15,7 +15,7 @@ class AgentBase(ABC):
         self.verbose = verbose # all the description and logs
 
     @abstractmethod
-    def generate_response(self, *args,**kwargs):
+    def execute(self, *args,**kwargs):
         pass
 
 
@@ -28,7 +28,7 @@ class AgentBase(ABC):
                     for msg in messages:
                         logger.debug(f"{msg['role']}:{msg['content']}")
 
-                response = openai.Completion.create(
+                response = openai.ChatCompletion.create(
                     model = 'gpt-4o',
                     messages = messages,
                     temperature=temperature,

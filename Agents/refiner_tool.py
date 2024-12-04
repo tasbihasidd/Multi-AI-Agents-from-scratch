@@ -4,7 +4,7 @@ class RefinerAgentTool(AgentBase):
     def __init__(self, max_retries=2, verbose=True):
         super().__init__(name='RefinerAgentTool', max_retries=max_retries, verbose=verbose)
 
-    def execute(self,medical_data):
+    def execute(self,draft):
         messages = [
             {"role": "user", 
              "content": [
@@ -27,5 +27,5 @@ class RefinerAgentTool(AgentBase):
         ]
             }
         ]
-        refined_article = self.call_llm(messages,temperature = 0.3,max_tokens=1024) #calling llm 
+        refined_article = self.call_llm(messages,temperature = 0.3,max_tokens=2048) #calling llm 
         return refined_article
